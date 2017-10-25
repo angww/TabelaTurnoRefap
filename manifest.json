@@ -1,0 +1,21 @@
+{ 
+  "short_name": "Tabela Refap",
+  "name": "Tabela de Turno Refap 2ºsem/2017",
+  "icons": [
+    {
+      "src":"apple-touch-icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }
+
+  ],
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "#FFFFFF",
+  "theme_color": "#eeffff",
+  "display": "standalone",
+  "serviceworker": {
+    "src": "service-worker.js",
+    "scope": "/",
+    "use_cache": true
+  }
+}
