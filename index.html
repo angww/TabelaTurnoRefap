@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <!-- removi o , user-scalable=no -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=6.0" />
   <title>Tabela turno Refap 2017/2</title>
   <meta name="author" content="Angelo Araujo">
   <meta name="description" content="Tabela de turno da refinaria Alberto Pasqualini (REFAP) a partir de 25/setembro/2017.">
@@ -12,10 +12,10 @@
   <!-- aparência da barra de status -->
   <meta name="theme-color" content="#eeffff">
   
-  <link rel="manifest" href="/manifest.json">
+  <link rel="manifest" href="manifest.json">
   <meta name="mobile-web-app-capable" content="yes">
 
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-status-bar-style" content="white">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Tabela Turno Refap Iphone">
   <link rel="mask-icon" href="/safari-pinned-tab.svg?v=1" color="#ee5555">
@@ -32,6 +32,7 @@
   <meta name="msapplication-TileColor" content="#E55" />
   <meta name="msapplication-TileImage" content="mstile-144x144.png" />
   
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92630735-3"></script>
 
   <style>
     body {
@@ -223,14 +224,11 @@
     }
   }
 
-  if (document.location.hostname.search("surge") !== -1) { // Works only in production  
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    
-      ga('create', 'UA-92630735-2', 'auto');
-      ga('send', 'pageview');
+  if (document.location.hostname.search("github") !== -1) { // Works only in production  
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-92630735-3');
   }
 
   if ('serviceWorker' in navigator) {
