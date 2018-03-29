@@ -27,7 +27,7 @@
   <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152.png" />
   <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
-  <meta name="application-name" content="Tabela Turno Refap 2017/2"/>
+  <meta name="application-name" content="Tabela (9) Turno Refap 2017/2"/>
   <meta name="msapplication-TileColor" content="#E55" />
   <meta name="msapplication-TileImage" content="mstile-144x144.png" />
   
@@ -125,7 +125,7 @@
     <div class="divFundo"></div>
     <div class="dCol" style="z-index: 20; background: rgba(255, 255, 255, 0.2); position: fixed; ">
       <div class="dColC" style="z-index: 15; font-weight: bold;">
-        <div>2017</div>
+        <div>2018</div>
         <div>G1</div>
         <div>G2</div>
         <div>G3</div>
@@ -151,7 +151,8 @@
   }
 
   function textoDataPeloIndice(i) {
-    var dat = new Date("09/25/2017");
+    //var dat = new Date("09/25/2017");
+    var dat = new Date("02/12/2018");
     dat.setDate(dat.getDate() + i);
     return DateToStringDataRefap(dat);
     //return dat.toUTCString().slice(5,11);
@@ -169,7 +170,8 @@
   var indiceData = 0;
   var TabelaDataIndice = {};
 
-  Tabela.split(",").map(function (k, i) { // i começa em zero
+  Tabela.split(",").slice(0,530).map(function (k, i) { // i começa em zero
+  // SLICE é para o fim da tabela 10, dia 28/05/2018
 
     var objDia = document.createElement("div");
 
@@ -211,6 +213,7 @@
 
     objDia.appendChild(document.createTextNode(k));
     document.getElementById(lastColId).appendChild(objDia);
+
   });
 
   ListaData = document.getElementsByClassName("divData");
