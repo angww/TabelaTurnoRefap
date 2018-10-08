@@ -1,5 +1,5 @@
-# TabelaTurnoRefap
-Tabela de turno da Refinaria Alberto Pasqualini
-Repositório para testes.
+# Tabelaturno.github.io
+Shift work table in a static web page. <br>
+Link: [https://tabelaturno.github.io](https://tabelaturno.github.io)
 
-Link: <https://angww.github.io/TabelaTurnoRefap/>
+This is the first version. The project is under development.
