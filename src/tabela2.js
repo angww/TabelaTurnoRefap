@@ -2,6 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes, { func } from 'prop-types';
 import tabelaGear from './tableGear';
+import { trackUser, trackEvent} from './analytics';
+
+
 
 Date.prototype.addDays = function(days) {
     var date = new Date(this.valueOf());
@@ -40,8 +43,12 @@ const styleClassWeekDay = function(inProp) {
 const styleClassToday = function(inProp) {
     return isToday(inProp) ? "tdToday": "";
 }
-
-const yearTD = (day) => <th className={'tdDate'}>{day.getFullYear()}</th>;
+const eventClick = function(inLog) {
+    console.log("Click:" + inLog);
+    trackEvent('Click', inLog, 'label1');
+    return true;
+}
+const yearTD = (day) => <th className={'tdDate'} onClick={() => eventClick("Ano"+day.getFullYear())}>{day.getFullYear()}</th>;
 const weekDayTD = (day) => {           
     let wd = day.getDay();
     let weekLabel = weekDay[wd].toUpperCase();
@@ -54,20 +61,22 @@ const dayTDfunc = (day) =>
             );
 const groupsTD = (groups) => 
     groups.map((groupName, i) =>
-        <th key={i}>{groupName}</th>
+        <th key={i} onClick={() => eventClick("Grupo "+groupName)}>{groupName}</th>
     );
 const daysTR = (daysIn) => daysIn.map((day, i) =>
     <tr key={i} className={[styleClassWeekDay(day.day), 'trTable'].join(' ')}>
-    <td className={['tdDate', styleClassToday(day.day)].join(' ')} > {DateToStringFormated(day.day)}</td> 
+    <td key={i} className={['tdDate', styleClassToday(day.day)].join(' ')} > {DateToStringFormated(day.day)}</td> 
         {weekDayTD(day.day)} 
         {dayTDfunc(day)} 
     </tr>
 );
+
+/* <th>{objMonthScales[0].day.toLocaleDateString("pt")}</th> */
 const monthTRHeader = (objMonthScales) =>
     (   
         <tr className={'trHead'}>
-            {yearTD(objMonthScales[0].day)} 
-            <th></th> 
+            {yearTD(objMonthScales[0].day)}
+            <th>&nbsp;</th> 
             {groupsTD(objMonthScales[0].groups)} 
         </tr> 
         
@@ -86,7 +95,7 @@ function getDistFromBottom () {
 
 document.addEventListener('scroll', function() {
     let distToBottom = getDistFromBottom();
-    if (distToBottom > 0 && distToBottom <= 200) { // Near end;
+    if (distToBottom > 0 && distToBottom <= 1000) { // Near end;
        
     }
 });
@@ -99,31 +108,44 @@ class Tabela2 extends React.Component {
     constructor(props) {
         super(props);
         
-        const { month, tabela } = this.props;
+        const { month, tableName } = this.props;
 
-        tabelaGear.populateTableDate(tabela);
+        tabelaGear.populateTableDate(tableName);
         const dateIn = new Date();
         const days = tabelaGear.getMonthScales(dateIn);
+
+        let beforeFirstMounthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()-1, 1);
+        let daysbefore = tabelaGear.getMonthScales(beforeFirstMounthDay);
+
         
         this.state = { 
-            tableInput: tabela,
+            tableInput: tableName,
             dayOne: dateIn,
             actualDay: dateIn,
-            monthsTRs: [monthTRsComplete(days)],
+            monthsTRs: [monthTRsComplete(daysbefore), monthTRsComplete(days)],
         }
         //Load more 1 month
         const extTick = this.tick.bind(this);
         extTick();
+
+        //Track user default zoom
+        let zoom = ((window.outerWidth - (window.outerWidth*0.1)  ) / window.innerWidth).toFixed(5);
+        console.log(zoom);
+        trackEvent('DefaultZoom', zoom, 'label1');
     }
 
     tick()   {
         const dateIn = this.state.actualDay;
         let nextFirstMounthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()+1, 1);
         let nextMonthScale = tabelaGear.getMonthScales(nextFirstMounthDay);
-        //this.setState({actualDay: nextFirstMounthDay});
         let newMonthsObj = this.state.monthsTRs;
         newMonthsObj.push(monthTRsComplete(nextMonthScale));
         this.setState({actualDay: nextFirstMounthDay, monthsTRs: newMonthsObj });
+        
+        // Track month loading
+        let trackAction = dateIn.getFullYear()+"-"+(dateIn.getMonth()+1);
+        console.log(trackAction);
+        trackEvent('Navigation', trackAction, 'label1');
          
      }
 
@@ -131,11 +153,10 @@ class Tabela2 extends React.Component {
         const extTick = this.tick.bind(this);
         document.addEventListener('scroll', function() {
             let distToBottom = getDistFromBottom();
-            if (distToBottom > 0 && distToBottom <= 200) { // Near end;
+            //console.log(distToBottom);
+            if (distToBottom > 0 && distToBottom <= 1400) { // Near end;
                console.log('dentro do reac');
                extTick();
-               //extTick();
-               
             }
         });
     
@@ -146,7 +167,7 @@ class Tabela2 extends React.Component {
     }
 
 
-    render() {        
+    render() {  
         return ( 
             <table className={'tbMain'}>
                 {tBodyTable(this.state.monthsTRs)}
@@ -157,7 +178,7 @@ class Tabela2 extends React.Component {
 
 
 Tabela2.propTypes = {
-    classes: PropTypes.object.isRequired,
+    //classes: PropTypes.object.isRequired,
 };
 
 

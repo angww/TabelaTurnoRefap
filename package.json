@@ -1,5 +1,5 @@
 {
-  "name": "tabela4",
+  "name": "TabelaTurno",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://angww.github.io/TabelaTurnoRefap/",
@@ -8,7 +8,9 @@
     "@material-ui/icons": "^3.0.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "^2.0.4"
+    "react-ga": "^2.5.3",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
