@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.2/workbox-sw.js");
 
 importScripts(
-  "/TabelaTurnoRefap/precache-manifest.b081857d2527ce4c1d519fc42cf222ef.js"
+  "/TabelaTurnoRefap/precache-manifest.ccbaa2594588e080345f91b888c15d83.js"
 );
 
 workbox.clientsClaim();
