@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/TabelaTurnoRefap/static/css/main.08d77afb.chunk.css"
   },
   {
-    "revision": "1186ddfcd14f5a2c05e7f436251ce003",
+    "revision": "aedfa31da3863c9cadc6c5e003acaa97",
     "url": "/TabelaTurnoRefap/index.html"
   }
 ];
