@@ -4,7 +4,7 @@
   
   "display": "standalone",
   "theme_color": "#FF0000",
-  "background_color": "#00FF00",
+  "background_color": "#FFFFFF",
   "start_url": "/?utm_source=homescreen",
 
   "icons": [
