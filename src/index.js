@@ -9,7 +9,7 @@ import * as serviceWorker from './serviceWorker';
 const Root = () => (
     <Switch>
       <Route path="/about" render={() => <div>ABOUT</div>} />
-      <Route exact path="/" component={() => <App tableName="Refap23" />} />
+      <Route exact path="/" component={() => <App tableName="Refap0" />} />
       <Route exact path="/Reduc" component={() => <App tableName="Reduc" />} />
       <Route exact path="/Refap0" component={() => <App tableName="Refap0" />} />
       <Route exact path="/Refap23" component={() => <App tableName="Refap23" />} />

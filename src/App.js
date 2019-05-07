@@ -31,14 +31,21 @@ class App extends Component {
 
     //
   /*   <div style={debugdiv}>Debug: {process.env.NODE_ENV}</div>  */
+  /* <div style={stl}>http://tabelaturno.github.io<br /> Obrigado pela preferência! ☺  </div> */
     return (
-      <div className="App">
-        <div style={stl}>http://tabelaturno.github.io<br /> Obrigado pela preferência! ☺  </div>
+      <>
+        
+        <div className="topBar" onClick={handleClick}>
+        🗓 tabelaturno.github.io/Refap
+          <div style={{float: 'right'}}>⚙️</div>
+        </div>       
         <Tabela month="7" tableName={tableName}></Tabela>
-        <div className="bottomMenu" onClick={handleClick}>Menu <Link to="/Refap23">Refap23</Link> <Link to="/Refap0">Refap0</Link> <Link to="/Reduc">Reduc</Link></div> 
-      </div>
+        
+      </>
     );
   }
 }
-
+//<Link style={{color: 'red'}} to="/Refap0">Refap0 </Link>
+//<div className="bottomMenu" onClick={handleClick}>Menu <Link to="/Refap23">Refap23</Link> <Link to="/Refap0">Refap0</Link> <Link to="/Reduc">Reduc</Link></div> 
 export default App;
+

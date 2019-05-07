@@ -176,6 +176,7 @@ var structTabela = {
         ret.day = dateIn;
         ret.groups = this.groups;
         ret.schedule = this.daysLines[index1];
+        //console.log(diffDays + "--" + dateIn);
         return ret;
     },
     getMonthScales: function(dateIn) {
@@ -184,7 +185,7 @@ var structTabela = {
         let year = dateIn.getFullYear();
         let lastDayofMonth = (new Date(year,month+1,0)).getDate();
         for (let day=1; day <= lastDayofMonth; day++) {
-            let dateDay = new Date(year, month, day);
+            let dateDay = new Date(year, month, day, 8,0,0); // 8:00 AM for BUG of daylight saving (DST)
             let dia = this.getDayScales(dateDay);
             ret.push(dia);
         }

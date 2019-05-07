@@ -111,7 +111,7 @@ class Tabela2 extends React.Component {
         const { month, tableName } = this.props;
 
         tabelaGear.populateTableDate(tableName);
-        const dateIn = new Date();
+        const dateIn = new Date(); // GetToday
         const days = tabelaGear.getMonthScales(dateIn);
 
         let beforeFirstMounthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()-1, 1);
@@ -125,13 +125,8 @@ class Tabela2 extends React.Component {
             monthsTRs: [monthTRsComplete(daysbefore), monthTRsComplete(days)],
         }
         //Load more 1 month
-        const extTick = this.tick.bind(this);
-        extTick();
-
-        //Track user default zoom
-        let zoom = ((window.outerWidth - (window.outerWidth*0.1)  ) / window.innerWidth).toFixed(5);
-        console.log(zoom);
-        trackEvent('DefaultZoom', zoom, 'label1');
+        //const extTick = this.tick.bind(this);
+        //extTick();
     }
 
     tick()   {
@@ -161,17 +156,19 @@ class Tabela2 extends React.Component {
         });
     
         let timer = setTimeout(function () {
-            window.scrollTo(0, document.getElementsByClassName("tdToday")[0].offsetTop - 88); 
-        }, 100);
+            window.scrollTo(0, document.getElementsByClassName("tdToday")[0].offsetTop - 135); //era 88 
+        }, 50);
         
     }
 
 
     render() {  
         return ( 
+/*            <div className="tbContainer">*/
             <table className={'tbMain'}>
                 {tBodyTable(this.state.monthsTRs)}
             </table>
+            /*</div>*/
         )
     }
 }
