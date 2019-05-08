@@ -26,7 +26,7 @@
   F 8 8 8
   8 8 8 8`;
 
-    tableOpts["Refap23"] = 
+    tableOpts["Refap"] = 
 ` G1 G2 G3 G4 G5
   23 7 F 15 F
   23 7 F 15 F

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Tabela from './tabela2';
+import CardMenu from './CardMenu';
 //import withAnalytics from './analytics';
 import './App.css';
 
@@ -35,9 +36,9 @@ class App extends Component {
     return (
       <>
         
-        <div className="topBar" onClick={handleClick}>
-        🗓 tabelaturno.github.io/Refap
-          <div style={{float: 'right'}}>⚙️</div>
+        <div className="topBar">
+        🗓 tabelaturno.github.io/{tableName}
+          <CardMenu style={{float: 'right'}} />
         </div>       
         <Tabela month="7" tableName={tableName}></Tabela>
         
