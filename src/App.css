@@ -8,6 +8,8 @@
     --color-weekend-background: --color-weekend-background;
     --color-font-main: #000;
     --svg-flag-red: url('data:image/svg+xml,<svg width="80" height="26" xmlns="http://www.w3.org/2000/svg"><g><rect fill="rgb(255, 59, 48)" height="26" width="80" rx="8" ry="8"/></g></svg>');
+
+    --transition-scrool-props: top 0.2s ease-out;
 }
 
 .themeBlack {
@@ -49,6 +51,7 @@ div .App {
     height: 50px;
     padding: 15px 20px;
     font-weight: 700;
+    transition: var(--transition-scrool-props);
     
 }
 
@@ -78,6 +81,7 @@ div .App {
 
 .tbMain tr { border-collapse: collapse; border-bottom: 1px solid; border-color: var(--color-divider);  }
 
+.tbMain .trHead { border-bottom: 1px solid var(--color-background) }
 
 .tbMain tr td:first-child, .tbMain tr th:first-child{
     padding-left: 30px;
@@ -129,6 +133,7 @@ div .App {
 
 
 .trHead th {
+    transition: var(--transition-scrool-props);
     position: sticky;
     top: 49px;
     

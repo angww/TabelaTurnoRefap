@@ -125,8 +125,8 @@ class Tabela2 extends React.Component {
             monthsTRs: [monthTRsComplete(daysbefore), monthTRsComplete(days)],
         }
         //Load more 1 month
-        //const extTick = this.tick.bind(this);
-        //extTick();
+        const extTick = this.tick.bind(this);
+        extTick();
     }
 
     tick()   {

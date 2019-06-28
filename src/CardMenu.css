@@ -1,6 +1,8 @@
 .cardMenu {
     user-select: none; 
-    background-color: var(--color-background);
+    /*background-color: var(--color-background);*/
+    background-color: var(--color-background-header);
+
     padding: 25px;
     /*margin: 10px auto;*/
     width: 280px;

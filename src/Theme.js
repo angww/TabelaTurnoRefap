@@ -7,8 +7,12 @@ import { trackUser, trackEvent } from "./analytics";
 class BtnChangeTheme extends React.Component {
   constructor(props) {
     super(props);
+    
+    let localTheme = window.localStorage.getItem('AppTheme');
+    localTheme = (localTheme==null) ? "" : localTheme;
+
     this.state = {
-      AppTheme: ""
+      AppTheme: localTheme
     };
   }
 
@@ -20,6 +24,7 @@ class BtnChangeTheme extends React.Component {
         },
         function() {
           document.body.classList.add("themeBlack");
+          window.localStorage.setItem('AppTheme', 'themeBlack');
         }
       );
     } else {
@@ -29,6 +34,7 @@ class BtnChangeTheme extends React.Component {
         },
         function() {
           document.body.classList.remove("themeBlack");
+          window.localStorage.setItem('AppTheme', '');
         }
       );
     }
